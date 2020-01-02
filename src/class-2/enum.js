@@ -1,0 +1,2 @@
+export const ERR_FULL = 'ERR_FULL'
+export const ERR_INVALID_TICKET = 'ERR_INVALID_TICKET'
