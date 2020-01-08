@@ -1,3 +1,1 @@
-class Locker {
-
-}
+class Locker {}

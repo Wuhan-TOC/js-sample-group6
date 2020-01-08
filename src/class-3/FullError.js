@@ -1,3 +1,1 @@
-class FullError {
-
-}
+class FullError {}

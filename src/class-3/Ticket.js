@@ -1,3 +1,1 @@
-class Ticket {
-
-}
+class Ticket {}
