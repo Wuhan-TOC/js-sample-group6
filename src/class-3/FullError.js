@@ -1,1 +1,1 @@
-class FullError {}
+export default class FullError {}

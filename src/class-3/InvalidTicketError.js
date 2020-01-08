@@ -1,1 +1,1 @@
-class InvalidTicketError {}
+export default class InvalidTicketError {}
