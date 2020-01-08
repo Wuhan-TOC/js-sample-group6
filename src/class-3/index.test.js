@@ -54,16 +54,16 @@ test('should get a error when I save a bag given there is a full locker 1', () =
 test('should get a bag from locker 1 when I withdraw given there are a non-empty locker 1 and a non-full locker 2', () => {
   // given
   const locker1 = MockUtils.getANonEmptyLocker()
-  const ticket = robot.save('一个包')
   const locker2 = MockUtils.getANonEmptyLocker()
   const lockers = [locker1, locker2]
   const robot = new Robot(lockers)
+  const ticket = robot.save('一个包')
 
   // when
-  const bag = robot.withdraw(ticket)
+  robot.withdraw(ticket)
 
   // then
-  expect(bag).toBe('一个包') && expect(ticket.lockerId).toBe(locker1.id)
+  expect(ticket.lockerId).toBe(locker1.id)
 })
 
 // 5. given 我是一个机器人, 有一个空的一号柜 when 我拿一个错误的小票取包 then 我报错
@@ -106,6 +106,7 @@ class MockUtils {
   static getAWrontTicker() {
     return new Ticket({
       lockerId: '不存在的ID',
+      boxId: '不存在的ID',
     })
   }
 }
