@@ -14,7 +14,7 @@ export default class Robot {
         break
       }
     }
-    if (!ticket) {
+    if (ticket == null) {
       throw new FullError()
     }
 
@@ -23,9 +23,9 @@ export default class Robot {
 
   withdraw(ticket) {
     const { lockerId } = ticket
-    const locker = this.lockerList.find((item) => item.order === lockerId)
+    const locker = this.lockerList.find((locker) => locker.order === lockerId)
 
-    if (!locker) {
+    if (locker == null) {
       throw new InvalidTicketError()
     }
     locker.withdraw(ticket)

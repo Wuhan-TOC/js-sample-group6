@@ -83,8 +83,8 @@ test('should get a error when I withdraw given there is a empty locker 1', () =>
 class MockUtils {
   static getAFullLocker(order) {
     const locker = new Locker(24, order)
-    for (let i = 0; i < 24; i += 1) {
-      locker.save('别人的包')
+    for (let i = 0; i < 24; ++i) {
+      locker.save()
     }
     return locker
   }
@@ -99,7 +99,7 @@ class MockUtils {
 
   static getANonEmptyLocker(order) {
     const locker = new Locker(24, order)
-    locker.save('别人的包')
+    locker.save()
     return locker
   }
 

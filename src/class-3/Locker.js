@@ -11,10 +11,10 @@ class Locker {
 
   save() {
     const index = this.getEmptyBox()
-
     if (index === -1) {
       return new FullError()
     }
+
     this.boxes[index] = true
 
     return new Ticket({
@@ -34,7 +34,6 @@ class Locker {
 
   // eslint-disable-next-line class-methods-use-this
   open(index) {
-    // eslint-disable-next-line no-console
     console.log(`${index}号柜门打开`)
   }
 
