@@ -7,7 +7,6 @@ class Locker {
     this.size = size
     this.boxes = new Array(size)
     this.order = order
-    this.index = 0
   }
 
   save() {
@@ -39,7 +38,7 @@ class Locker {
   }
 
   getEmptyBox() {
-    return this.boxes.findIndex(box => !box);
+    return this.boxes.findIndex((box) => !box)
   }
 }
 
