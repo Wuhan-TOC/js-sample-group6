@@ -66,7 +66,7 @@ test('should get a bag from locker 1 when I withdraw given there are a non-empty
   expect(ticket.lockerId).toBe(locker1.order)
 })
 
-// 5. given 我是一个机器人, 有一个空的一号柜 when 我拿一个错误的小票取包 then 我报错
+// 5. given 我是一个机器人, 有一个一号柜 when 我拿一个错误的小票取包 then 我报错
 test('should get a error when I withdraw given there is a empty locker 1', () => {
   // given
   const locker1 = MockUtils.getAEmptyLocker(1)
@@ -77,6 +77,22 @@ test('should get a error when I withdraw given there is a empty locker 1', () =>
   expect(() => {
     // when
     robot.withdraw(MockUtils.getAWrongTicket())
+  }).toThrowError(InvalidTicketError)
+})
+
+// 6. given 我是一个机器人, 有一个一号柜 when 我拿一个使用过的小票取包 then 我报错
+test('should get a error when I withdraw with a used ticket given there is a empty locker 1', () => {
+  // given
+  const locker1 = MockUtils.getAEmptyLocker(1)
+  const lockers = [locker1]
+  const robot = new Robot(lockers)
+  const ticket = robot.save()
+  robot.withdraw(ticket)
+
+  // then
+  expect(() => {
+    // when
+    robot.withdraw(ticket)
   }).toThrowError(InvalidTicketError)
 })
 

@@ -24,10 +24,15 @@ class Locker {
   }
 
   withdraw(ticket) {
-    if (ticket.lockerId !== this.order || !this.boxes[ticket.boxId]) {
+    if (
+      ticket.lockerId !== this.order ||
+      !this.boxes[ticket.boxId] ||
+      ticket.isUsed()
+    ) {
       throw new InvalidTicketError()
     }
 
+    ticket.punch()
     this.open(ticket.boxId)
     this.boxes[ticket.boxId] = false
   }
