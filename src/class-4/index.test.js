@@ -1,6 +1,6 @@
 import Ticket from './Ticket'
 import Locker from './Locker'
-import Robot from './Robot'
+import SuperRobot from './SuperRobot'
 import FullError from './FullError'
 import InvalidTicketError from './InvalidTicketError'
 
@@ -73,6 +73,7 @@ describe('The super robot withdraw package', () => {
   test('should open box 0 of locker 1 when I withdraw a bag given a ticket box 0 of locker 1', () => {
     // given
     const locker = new Locker(24, 1)
+    const spy = jest.spyOn(locker, 'open')
     const lockers = [locker]
     const superRobot = new SuperRobot(lockers)
     const ticket = superRobot.save()
@@ -81,7 +82,6 @@ describe('The super robot withdraw package', () => {
     superRobot.withdraw(ticket)
 
     // then
-    const spy = jest.spyOn(locker, 'open')
     expect(spy).toHaveBeenCalledWith(0)
   })
 

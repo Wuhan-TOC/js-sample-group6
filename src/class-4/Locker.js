@@ -45,6 +45,11 @@ class Locker {
   getEmptyBox() {
     return this.boxes.findIndex((box) => !box)
   }
+
+  getEmptyRate() {
+    const emptyCount = this.boxes.filter(box => !box).length
+    return emptyCount / this.size
+  }
 }
 
 export default Locker
