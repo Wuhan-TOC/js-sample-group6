@@ -47,7 +47,7 @@ class Locker {
   }
 
   getEmptyRate() {
-    const emptyCount = this.boxes.filter(box => !box).length
+    const emptyCount = this.boxes.filter((box) => !box).length
     return emptyCount / this.size
   }
 }

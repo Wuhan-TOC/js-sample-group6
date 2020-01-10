@@ -8,13 +8,14 @@ export default class SuperRobot {
   save() {
     let ticket = null
 
-    let newLockerListSortedByEmptyRateAndOrder = Array.from(this.lockerList).sort((a, b) => {
-      let diff = a.getEmptyRate() - b.getEmptyRate()
+    const newLockerListSortedByEmptyRateAndOrder = Array.from(
+      this.lockerList
+    ).sort((a, b) => {
+      const diff = a.getEmptyRate() - b.getEmptyRate()
       if (Math.abs(diff) < 0.0001) {
         return a.order - b.order
-      } else {
-        return diff
       }
+      return diff
     })
 
     for (const locker of newLockerListSortedByEmptyRateAndOrder) {
