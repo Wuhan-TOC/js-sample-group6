@@ -2,9 +2,7 @@ import FullError from './FullError'
 import InvalidTicketError from './InvalidTicketError'
 import {
   getAFakeTicket,
-  getAEmptyLocker,
-  getAFullLocker,
-  getANonFullLocker, fillLocker,
+  fillLocker,
 } from './TestUtils'
 import GraduateRobot from './GraduateRobot'
 import Locker from './Locker'
