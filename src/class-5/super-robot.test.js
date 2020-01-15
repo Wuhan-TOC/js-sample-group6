@@ -2,7 +2,7 @@ import Locker from './Locker'
 import SuperRobot from './SuperRobot'
 import FullError from './FullError'
 import InvalidTicketError from './InvalidTicketError'
-import {fillLocker, getAFakeTicket} from './TestUtils'
+import { fillLocker, getAFakeTicket } from './TestUtils'
 
 // 存包
 describe('Super robot save package', () => {
@@ -117,4 +117,3 @@ describe('The super robot withdraw package', () => {
     }).toThrowError(InvalidTicketError)
   })
 })
-

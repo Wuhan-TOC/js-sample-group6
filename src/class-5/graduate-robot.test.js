@@ -1,10 +1,14 @@
-import Locker from './Locker'
-import SuperRobot from './SuperRobot'
 import FullError from './FullError'
 import InvalidTicketError from './InvalidTicketError'
-import {fillLocker, getAFakeTicket, getAEmptyLocker, getAFullLocker, getANonEmptyLocker, getANonFullLocker} from './TestUtils'
+import {
+  getAFakeTicket,
+  getAEmptyLocker,
+  getAFullLocker,
+  getANonFullLocker,
+} from './TestUtils'
 import GraduateRobot from './GraduateRobot'
 
+// 存包
 describe('graduate robot save', () => {
   // 1. given 我是一个机器人, 有一个非满的一号柜 when 我存一个包 then 我拿到一号柜的小票
   test('should get a ticket from locker 1 when I save a bag given there is a non-full locker 1', () => {
@@ -19,7 +23,7 @@ describe('graduate robot save', () => {
     // then
     expect(ticket.lockerId).toBe(locker1.order)
   })
-// 2. given 我是一个机器人, 有一个满的一号柜, 非满的二号柜, 非满的三号柜 when 我存一个包 then 我拿到二号柜的小票
+  // 2. given 我是一个机器人, 有一个满的一号柜, 非满的二号柜, 非满的三号柜 when 我存一个包 then 我拿到二号柜的小票
   test('should get a ticket from locker 2 when I save a bag given there are a full locker 1, a non-full locker 2 and a non-full locker 3', () => {
     // given
     const locker1 = getAFullLocker(1)
@@ -34,7 +38,7 @@ describe('graduate robot save', () => {
     // then
     expect(ticket.lockerId).toBe(locker2.order)
   })
-// 3. given 我是一个机器人, 有一个满的一号柜 when 我存一个包 then 我报错
+  // 3. given 我是一个机器人, 有一个满的一号柜 when 我存一个包 then 我报错
   test('should get a error when I save a bag given there is a full locker 1', () => {
     // given
     const locker1 = getAFullLocker(1)
@@ -47,11 +51,10 @@ describe('graduate robot save', () => {
       robot.save()
     }).toThrowError(FullError)
   })
-
 })
 
+// 取包
 describe('graduate robot withdraw', () => {
-
   // 4. given 我是一个机器人, 有一个非满的一号柜, 非满的二号柜, 我先存一个包, 拿到小票 when 我拿这个小票取包 then 从一号柜取到包
   test('should get a bag from locker 1 when I withdraw given there are a non-full locker 1 and a non-full locker 2 and I save a package', () => {
     // given
@@ -83,7 +86,7 @@ describe('graduate robot withdraw', () => {
     }).toThrowError(InvalidTicketError)
   })
 
-// 6. given 我是一个机器人, 有一个一号柜 when 我拿一个使用过的小票取包 then 我报错
+  // 6. given 我是一个机器人, 有一个一号柜 when 我拿一个使用过的小票取包 then 我报错
   test('should get a error when I withdraw with a used ticket given there is a empty locker 1', () => {
     // given
     const locker1 = getAEmptyLocker(1)
@@ -98,5 +101,4 @@ describe('graduate robot withdraw', () => {
       robot.withdraw(ticket)
     }).toThrowError(InvalidTicketError)
   })
-
 })
