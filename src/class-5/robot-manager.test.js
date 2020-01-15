@@ -289,7 +289,7 @@ describe('robot manager withdraw', () => {
   let ticket = null
   let spy = null
 
-  // 1. given 我是一个机器人管理员, 有一个存在一号柜零号位的小票
+  // 2.1 given 我是一个机器人管理员, 有一个存在一号柜零号位的小票
   describe('I am a robot manager, there is a ticket of locker1 box0', () => {
     beforeEach(() => {
       locker1 = new Locker(24, 1)
@@ -309,7 +309,7 @@ describe('robot manager withdraw', () => {
       spy = null
     })
 
-    // 1.1.1 given 我有一个毕业机器人, when 我取包, then 1号柜0号位打开
+    // 2.1.1 given 我有一个毕业机器人, when 我取包, then 1号柜0号位打开
     test('should locker1 box0 open when I withdraw given I have a graduate robot', () => {
       // given
       robotManager.connect(graduateRobot)
@@ -320,7 +320,7 @@ describe('robot manager withdraw', () => {
       // then
       expect(spy).toHaveBeenCalledWith(0)
     })
-    // 1.1.2 given 我有一个超级机器人, when 我取包, then 1号柜0号位打开
+    // 2.1.2 given 我有一个超级机器人, when 我取包, then 1号柜0号位打开
     test('should locker1 box0 open when I withdraw given I have a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -331,7 +331,7 @@ describe('robot manager withdraw', () => {
       // then
       expect(spy).toHaveBeenCalledWith(0)
     })
-    // 1.1.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 1号柜0号位打开
+    // 2.1.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 1号柜0号位打开
     test('should locker1 box0 open when I withdraw given I have a graduate robot and a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -343,7 +343,7 @@ describe('robot manager withdraw', () => {
       // then
       expect(spy).toHaveBeenCalledWith(0)
     })
-    // 1.1.4 given 我手下没有机器人, when 我取包, then 1号柜0号位打开
+    // 2.1.4 given 我手下没有机器人, when 我取包, then 1号柜0号位打开
     test('should locker1 box0 open when I withdraw given I have no robot', () => {
       // given
 
@@ -355,7 +355,7 @@ describe('robot manager withdraw', () => {
     })
   })
 
-  // 2. given 我是一个机器人管理员, 有一个伪造小票
+  // 2.2 given 我是一个机器人管理员, 有一个伪造小票
   describe('I am a robot manager, there is a fake ticket', () => {
     beforeEach(() => {
       locker1 = new Locker(24, 1)
@@ -373,7 +373,7 @@ describe('robot manager withdraw', () => {
       ticket = null
     })
 
-    // 1.1.1 given 我有一个毕业机器人, when 我取包, then 报错
+    // 2.2.1 given 我有一个毕业机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a graduate robot', () => {
       // given
       robotManager.connect(graduateRobot)
@@ -384,7 +384,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.2 given 我有一个超级机器人, when 我取包, then 报错
+    // 2.2.2 given 我有一个超级机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -395,7 +395,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 报错
+    // 2.2.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a graduate robot and a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -407,7 +407,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.4 given 我手下没有机器人, when 我取包, then 报错
+    // 2.2.4 given 我手下没有机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have no robot', () => {
       // given
 
@@ -419,7 +419,7 @@ describe('robot manager withdraw', () => {
     })
   })
 
-  // 3. given 我是一个机器人管理员, 有一个用过的小票
+  // 2.3 given 我是一个机器人管理员, 有一个用过的小票
   describe('I am a robot manager, there is a used ticket', () => {
     beforeEach(() => {
       locker1 = new Locker(24, 1)
@@ -439,7 +439,7 @@ describe('robot manager withdraw', () => {
       ticket = null
     })
 
-    // 1.1.1 given 我有一个毕业机器人, when 我取包, then 报错
+    // 2.3.1 given 我有一个毕业机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a graduate robot', () => {
       // given
       robotManager.connect(graduateRobot)
@@ -450,7 +450,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.2 given 我有一个超级机器人, when 我取包, then 报错
+    // 2.3.2 given 我有一个超级机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -461,7 +461,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 报错
+    // 2.3.3 given 我有一个毕业机器人和一个超级机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have a graduate robot and a super robot', () => {
       // given
       robotManager.connect(superRobot)
@@ -473,7 +473,7 @@ describe('robot manager withdraw', () => {
         robotManager.withdraw(ticket)
       }).toThrowError(InvalidTicketError)
     })
-    // 1.1.4 given 我手下没有机器人, when 我取包, then 报错
+    // 2.3.4 given 我手下没有机器人, when 我取包, then 报错
     test('should get an error when I withdraw given I have no robot', () => {
       // given
 
