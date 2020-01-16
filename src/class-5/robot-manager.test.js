@@ -1,9 +1,6 @@
 import FullError from './FullError'
 import InvalidTicketError from './InvalidTicketError'
-import {
-  getAFakeTicket,
-  fillLocker,
-} from './TestUtils'
+import { getAFakeTicket, fillLocker } from './TestUtils'
 import GraduateRobot from './GraduateRobot'
 import Locker from './Locker'
 import RobotManager from './RobotManager'

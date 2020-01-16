@@ -47,6 +47,7 @@ class Locker {
   }
 
   getEmptyRate() {
+    // eslint-disable-next-line prefer-destructuring
     const emptyCount = this.boxes.filter((box) => !box).length
     return emptyCount / this.size
   }

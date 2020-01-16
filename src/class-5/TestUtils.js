@@ -17,7 +17,7 @@ export function getAFakeTicket() {
 
 export function getAFullLocker(order) {
   const locker = new Locker(24, order)
-  for (let i = 0; i < 24; ++i) {
+  for (let i = 0; i < 24; i += 1) {
     locker.save()
   }
   return locker

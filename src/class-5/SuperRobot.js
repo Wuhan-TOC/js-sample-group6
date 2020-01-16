@@ -24,7 +24,7 @@ export default class SuperRobot {
         break
       }
     }
-    if (ticket == null) {
+    if (!ticket) {
       throw new FullError()
     }
 
@@ -35,7 +35,7 @@ export default class SuperRobot {
     const { lockerId } = ticket
     const locker = this.lockerList.find((locker) => locker.order === lockerId)
 
-    if (locker == null) {
+    if (!locker) {
       throw new InvalidTicketError()
     }
     locker.withdraw(ticket)

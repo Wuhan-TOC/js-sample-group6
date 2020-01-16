@@ -6,28 +6,26 @@ export default class GraduateRobot {
     this.lockerList = lockerList
   }
   save() {
-    let ticket = null
+    const foundLocker = this.lockerList.find(
+      (locker) => locker.getEmptyBox() !== -1
+    )
 
-    for (const locker of this.lockerList) {
-      if (locker.getEmptyBox() !== -1) {
-        ticket = locker.save()
-        break
-      }
-    }
-    if (ticket == null) {
+    if (!foundLocker) {
       throw new FullError()
     }
 
-    return ticket
+    return foundLocker.save()
   }
 
   withdraw(ticket) {
     const { lockerId } = ticket
-    const locker = this.lockerList.find((locker) => locker.order === lockerId)
+    const foundLocker = this.lockerList.find(
+      (locker) => locker.order === lockerId
+    )
 
-    if (locker == null) {
+    if (!foundLocker) {
       throw new InvalidTicketError()
     }
-    locker.withdraw(ticket)
+    foundLocker.withdraw(ticket)
   }
 }
